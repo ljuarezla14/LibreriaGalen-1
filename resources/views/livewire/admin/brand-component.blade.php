@@ -1,0 +1,97 @@
+<div class="container py-12">
+    {{-- Formulario crear --}}
+    <x-form-section submit="save" class="mb-6">
+        <x-slot name="title">
+            Agregar nueva marca
+        </x-slot>
+
+        <x-slot name="description">
+            En esta seccion podrá agregar nueva marca
+        </x-slot>
+
+        <x-slot name="form">
+            <div class="col-span -4 sm:col-span-4">
+                <x-label>
+                    Nombre
+                </x-label>
+
+                <x-input type="text" wire:model="createForm.name" class="w-full" />
+                </x-input-error for="createForm.name">
+            </div>
+        </x-slot>
+
+        <x-slot name="actions">
+            <x-action-message class="mr-3" on="saved">
+                Marca creada
+            </x-action-message>
+            <x-button>
+                Agregar
+            </x-button>
+        </x-slot>
+    </x-form-section>
+    {{-- Lista de marcas --}}
+    <x-action-section>
+        <x-slot name="title">
+            Lista de marcas
+        </x-slot>
+
+        <x-slot name="description">
+            Aquí encontrará todas las marcas agregadas
+        </x-slot>
+
+        <x-slot name="content">
+
+            <table class="text-gray-600">
+                <thead class="border-b border-gray-300">
+                    <tr class= "text-left">
+                        <th class="py-2 w-full">Nombre</th>
+                        <th class="py-2">Acción</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-300">
+                    @foreach ($brands as $brand)
+                        <tr>
+                            <td class="py-2">
+
+                                <span class="uppercase">
+                                    {{$brand->name}}
+                            </span>
+                            </td>
+                            <td class="py-2">
+                                <div class="flex divide-x divide-gray-300 font-semibold">
+                                    <a class="pr-2 hover:text-blue-600 cursor-pointer" wire:click="edit('{{$brand->id}}')">Editar</a>
+                                    <a class="pl-2 hover:text-red-600 cursor-pointer" wire:click="delete('{{$brand->id}}')">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </x-slot>
+    </x-action-section>
+
+    {{-- Modal Editar --}}
+    <x-dialog-modal wire:model="editForm.open">
+
+        <x-slot name="title">
+            Edit marca
+        </x-slot>
+
+        <x-slot name="content">
+            <x-label>
+                Nombre
+            </x-label>
+            <x-input wire:model="editForm.name" type="text" class="w-full"/>
+            <x-input-error for="editForm.name"/>
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-danger-button wire:click="update" wire:loading.attr="disabled" wire:target="update">
+                Actualizar
+            </x-danger-button>
+        </x-slot>
+
+    </x-dialog-modal>
+
+
+</div>

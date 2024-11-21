@@ -1,0 +1,43 @@
+@import 'container.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+[x-cloak] {
+    display: none;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.nav-link {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px; /* Espacio para la línea */
+    transition: opacity 0.3s ease; /* Suavizado para el efecto de opacidad */
+}
+
+.nav-link:hover {
+    opacity: 0.75; /* Efecto de opacidad al hacer hover */
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px; /* Grosor de la línea */
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
