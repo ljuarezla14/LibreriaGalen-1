@@ -5,8 +5,8 @@
                 Lista de productos
             </h2>
 
-            <x-button-enlace class="ml-auto" href="{{route('admin.admin.products.create')}}">
-                Agregar Producto
+            <x-button-enlace class="ml-auto" href="{{route('home')}}">
+                Volver
             </x-button-enlace>
        </div>
 

@@ -21,8 +21,7 @@ return new class extends Migration
             $table->string('dni');
             $table->string('phone');
 
-            $table->enum('status', [Order::PENDIENTE, Order::ENTREGADO])->default(Order::PENDIENTE);
-            $table->float('subtotal');
+            $table->enum('status', [Order::RECIBIDO, Order::PAGADO, Order::ENTREGADO, Order::CANCELADO])->default(Order::RECIBIDO);
             $table->float('total');
             $table->json('content');
             $table->timestamps();

@@ -15,7 +15,7 @@ $width = match ($width) {
 };
 @endphp
 
-<div class="relative" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
+<div class="relative" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false" style="z-index: 900">
     <div @click="open = ! open">
         {{ $trigger }}
     </div>
@@ -28,7 +28,7 @@ $width = match ($width) {
             x-transition:leave-start="transform opacity-100 scale-100"
             x-transition:leave-end="transform opacity-0 scale-95"
             class="absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }} {{ $dropdownClasses }}"
-            style="display: none;"
+            style="display: none"
             @click="open = false">
         <div class="rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}">
             {{ $content }}
