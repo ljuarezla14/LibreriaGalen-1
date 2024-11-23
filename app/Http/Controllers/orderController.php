@@ -26,4 +26,11 @@ class orderController extends Controller
 
         return view('orders.index', compact('orders', 'recibido', 'pagado', 'entregado', 'cancelado'));
     }
+
+    public function show(Order $order){
+
+
+        return view('orders.show', compact('order'));
+
+    }
 }

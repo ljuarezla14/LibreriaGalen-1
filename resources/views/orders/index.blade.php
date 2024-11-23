@@ -48,8 +48,8 @@
                                 <ul>
                                     @foreach ($orders as $order)
                                         <li>
-                                            {{-- <a href="{{route('orders.show', $order)}}" class="flex items-center py-2 px-4 hover:bg-gray-100"> --}}
-                                            <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-100">
+                                            <a href="{{route('orders.show', $order)}}" class="flex items-center py-2 px-4 hover:bg-gray-100">
+                                            {{-- <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-100"> --}}
                                                 <span class="w-12 text-center">
                                                     @switch($order->status)
                                                         @case(1)
@@ -76,6 +76,8 @@
                                                     Orden: {{$order->id}}
                                                     <br>
                                                     {{$order->created_at->format('d/m/Y')}}
+                                                    <br>
+                                                    Cliente: {{$order->client}}
                                                 </span>
                                                 <div class="ml-auto">
                                                     <span font-bold>

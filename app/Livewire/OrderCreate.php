@@ -11,7 +11,7 @@ class OrderCreate extends Component
 {
     use AuthorizesRequests;
     public $client, $dni, $phone, $status, $order;
-    protected $listeners = ['render' => 'render'];
+    protected $listeners = ['render'];
 
     public function delete($rowID, Order $order){
         $items = json_decode($order->content);
@@ -58,11 +58,13 @@ class OrderCreate extends Component
             Cart::destroy();
         }
         $items = json_decode($order->content);
-        $this->render();
         return view('livewire.order-create', compact('order', 'items'));
     }
 
     public function render()
-    {        return view('livewire.order-create');
+    {
+        $items = json_decode($this->order->content);
+
+        return view('livewire.order-create', compact('items'));
     }
 }

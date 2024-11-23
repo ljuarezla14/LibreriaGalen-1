@@ -18,6 +18,7 @@ Route::get('/marcas', ShowBrands::class)->name('show.brands');
 Route::get('/crearOrden', CreateOrder::class)->name('create.order');
 Route::get('orders/{order}', [OrderCreate::class, 'show'])->name('orders.create');
 Route::get('orders', [orderController::class, 'index'])->name('orders.index');
+Route::get('order/{order}', [OrderController::class, 'show'])->name('orders.show');
 
 // Route::middleware([
 //     'auth:sanctum',
