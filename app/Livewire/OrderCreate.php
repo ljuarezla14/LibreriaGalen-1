@@ -10,8 +10,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class OrderCreate extends Component
 {
     use AuthorizesRequests;
-    public $client, $dni, $phone, $status;
-    protected $listeners = ['render'];
+    public $client, $dni, $phone, $status, $order;
+    protected $listeners = ['render' => 'render'];
 
     public function delete($rowID, Order $order){
         $items = json_decode($order->content);
@@ -63,7 +63,6 @@ class OrderCreate extends Component
     }
 
     public function render()
-    {
-        return view('livewire.order-create');
+    {        return view('livewire.order-create');
     }
 }

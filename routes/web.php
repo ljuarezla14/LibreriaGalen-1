@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\orderController;
 use App\Http\Controllers\WelcomeController;
 use App\Livewire\CreateOrder;
 use App\Livewire\OrderCreate;
@@ -16,6 +17,7 @@ Route::get('/subcategorias', ShowSubcategory::class)->name('show.subcategory');
 Route::get('/marcas', ShowBrands::class)->name('show.brands');
 Route::get('/crearOrden', CreateOrder::class)->name('create.order');
 Route::get('orders/{order}', [OrderCreate::class, 'show'])->name('orders.create');
+Route::get('orders', [orderController::class, 'index'])->name('orders.index');
 
 // Route::middleware([
 //     'auth:sanctum',

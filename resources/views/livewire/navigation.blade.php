@@ -12,16 +12,22 @@
         </div>
 
         @auth
-            <div class="bg-gray-800 px-4 py-2 max-w-3xl flex items-center space-x-4 rounded-3xl">
-                <a href="{{route('show.products')}}" class="nav-link">Productos</a>
-                <span class="text-white font-semibold">|</span>
-                <a href="{{route('show.category')}}" class="nav-link">Categorías</a>
-                <span class="text-white font-semibold">|</span>
-                <a href="{{route('show.subcategory')}}" class="nav-link">Subcategorías</a>
-                <span class="text-white font-semibold">|</span>
-                <a href="{{route('show.brands')}}"  class="nav-link">Marcas</a>
-                <span class="text-white font-semibold">|</span>
-                <a href="{{route('create.order')}}" class="nav-link">Ordenes</a>
+            <div class="flex justify-between">
+                <div class="bg-gray-800 mr-8 px-4 py-2 space-x-4 flex items-center rounded-3xl">
+                    <a href="{{route('show.products')}}" class="nav-link">Productos</a>
+                    <span class="text-white font-semibold">|</span>
+                    <a href="{{route('show.category')}}" class="nav-link">Categorías</a>
+                    <span class="text-white font-semibold">|</span>
+                    <a href="{{route('show.subcategory')}}" class="nav-link">Subcategorías</a>
+                    <span class="text-white font-semibold">|</span>
+                    <a href="{{route('show.brands')}}"  class="nav-link">Marcas</a>
+
+                </div>
+                <div class="bg-gray-800 ml-8 px-4 py-2 flex space-x-4 items-center rounded-3xl">
+                    <a href="{{route('create.order')}}" class="nav-link">Crear Orden</a>
+                    <span class="text-white font-semibold">|</span>
+                    <a href="{{route('orders.index')}}" class="nav-link">Mis Ordenes</a>
+                </div>
             </div>
         @endauth
 

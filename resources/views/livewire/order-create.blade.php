@@ -2,60 +2,25 @@
     <x-app-layout>
         <div class="container">
             <div class=" flex justify-between items-center rounded-lg shadow-lg px-6 py-4 mt-4 bg-white ">
-                <p class="text-gray-600 text-lg md:text-lg text-left font-indie font-semibold ml-1">Vendedor: {{ $order->user->name }} </p>
+                <p class="text-gray-600 text-lg md:text-lg text-left font-indie font-semibold ml-1">Vendedor:
+                    {{ $order->user->name }} </p>
                 <div class="flex items-center text-center">
                     {{-- <img src="/img/camarero.png" width="34" alt="" class="ml-2"> --}}
                     <h1 class="text-gray-600 text-lg md:text-2xl uppercase text-left font-indie font-semibold">
                         Orden - {{ $order->id }}</h1>
                 </div>
-                @if ($order->status == 1)
-                    <x-button-enlace class="text-gray-600 text-md uppercase text-left font-indie cursor-pointer">Pagar</x-button-enlace>
+                {{-- @if ($order->status == 1)
+                    <x-button-enlace wire:submit.prevent="update" name="status" value="2" class="text-gray-600 text-md uppercase text-left font-indie cursor-pointer">Pagar</x-button-enlace>
                 @elseif($order->status == 2)
                     <x-button-enlace class="text-gray-600 text-md uppercase text-left font-indie cursor-pointer">Entregar</x-button-enlace>
                 @else
-                @endif
+                @endif --}}
             </div>
+
+            @livewire('status-order', ['order' => $order], key('status-order-' . $order->id))
+
             {{-- prueba --}}
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-2 py-4">
-                <div class="bg-white rounded-lg shadow-lg px-3 md:px-8 py-8 mb-3 flex items-center">
-                    <div class="relative">
-                        <div
-                            class="{{ $order->status >= 1 && $order->status != 4 ? 'bg-blue-400' : 'bg-gray-400' }} rounded-full h-12 w-12  flex items-center justify-center">
-                            <i class="fas fa-check text-white"></i>
-                        </div>
-                        <div class="absolute -left-1 mt0-0.5">
-                            <p class="text-sm md:text-md md:font-semibold">Recibido</p>
-                        </div>
-                    </div>
-                    <div
-                        class="{{ $order->status >= 2 && $order->status != 4 ? 'bg-blue-400' : 'bg-gray-400' }} h-1 flex-1  md:mx-2">
-                    </div>
 
-                    <div class="relative">
-                        <div
-                            class="{{ $order->status >= 2 && $order->status != 4 ? 'bg-blue-400' : 'bg-gray-400' }} rounded-full h-12 w-12  flex items-center justify-center">
-                            <i class="far fa-money-bill-alt text-white"></i>
-                        </div>
-                        <div class="absolute n-left-1 mt0-0.5">
-                            <p class="text-sm md:text-md md:font-semibold">Pagado</p>
-                        </div>
-                    </div>
-
-                    <div
-                        class="{{ $order->status >= 3 && $order->status != 4 ? 'bg-blue-400' : 'bg-gray-400' }} h-1 flex-1   md:mx-2">
-                    </div>
-
-                    <div class="relative">
-                        <div
-                            class="{{ $order->status >= 3 && $order->status != 4 ? 'bg-blue-400' : 'bg-gray-400' }} rounded-full h-12 w-12 flex items-center justify-center">
-                            <i class="fa fa-thumbs-up text-white"></i>
-                        </div>
-                        <div class="absolute left-.5 mt0-0.5">
-                            <p class="text-sm md:text-md md:font-semibold">Entregado</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             {{-- fin prueba --}}
             <div class="flex items-center justify-center rounded-lg shadow-lg px-6 py-4 mt-4 bg-white ">
                 <h1 class="text-gray-600 text-2xl  text-left font-indie font-semibold mr-4">Lista</h1>
@@ -122,21 +87,24 @@
                     <div class="mb-4">
                         <x-label value="Nombre de cliente" />
                         <p type="text"
-                        class="w-full border-gray-200 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm bg-gray-100 text-gray-400 font-semibold text-md" disabled>{{$order->client}}</p>
+                            class="w-full border-gray-200 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm bg-gray-100 text-gray-400 font-semibold text-md"
+                            disabled>{{ $order->client }}</p>
 
                     </div>
 
                     <div class="mb-4">
                         <x-label value="Dni de cliente" />
                         <p type="text"
-                        class="w-full border-gray-200 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm bg-gray-100 text-gray-400 font-semibold text-md" disabled>{{$order->dni}}</p>
+                            class="w-full border-gray-200 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm bg-gray-100 text-gray-400 font-semibold text-md"
+                            disabled>{{ $order->dni }}</p>
 
                     </div>
 
                     <div class="mb-4">
                         <x-label value="Celular de cliente" />
                         <p type="text"
-                        class="w-full border-gray-200 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm bg-gray-100 text-gray-400 font-semibold text-md" disabled>{{$order->phone}}</p>
+                            class="w-full border-gray-200 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm bg-gray-100 text-gray-400 font-semibold text-md"
+                            disabled>{{ $order->phone }}</p>
 
                     </div>
 
@@ -152,29 +120,32 @@
                     </a>
                 </div>
                 @if ($order->status == 1)
-                <div class="">
-                    <div class="container">
-                        <div class="flex justify-center items-center rounded-lg shadow-lg px-6 py-4 mt-4 bg-white ">
-                            <p class="text-gray-600 text-2xl  text-center font-indie"><span
-                                    class="font-semibold mr-2 text-md md:text-2xl ">¿Faltó algún producto...?</span></p>
-                            {{-- <x-add-list size="40" /> --}}
-                        </div>
+                    <div class="">
+                        <div class="container">
+                            <div
+                                class="flex justify-center items-center rounded-lg shadow-lg px-6 py-4 mt-4 bg-white ">
+                                <p class="text-gray-600 text-2xl  text-center font-indie"><span
+                                        class="font-semibold mr-2 text-md md:text-2xl ">¿Faltó algún
+                                        producto...?</span></p>
+                                {{-- <x-add-list size="40" /> --}}
+                            </div>
 
-                        <div class=" bg-blue-200 rounded-lg shadow-lg px-2 md:px-6 py-4 mt-6 md:mx-12 mb-6">
-                            <div class="flex">
-                                @livewire('search')
+                            <div class=" bg-blue-200 rounded-lg shadow-lg px-2 md:px-6 py-4 mt-6 md:mx-12 mb-6">
+                                <div class="flex">
+                                    @livewire('search')
+                                </div>
+                            </div>
+
+                            {{-- Tabla cart new --}}
+                            @livewire('table-cart')
+                            {{-- fin tabla cart new --}}
+                            <div class="flex justify-center items-center mt-4">
+                                <a href="{{ route('orders.create', $order) }}"
+                                    class="bg-[#28617A]  py-4 w-full text-center md:px-8 md:py-2 md:pt-3 rounded-lg text-white text-sm md:text-lg hover:opacity-80">Enviar
+                                    Comanda</a>
                             </div>
                         </div>
-
-                        {{-- Tabla cart new --}}
-                        @livewire('table-cart')
-                        {{-- fin tabla cart new --}}
-                        <div class="flex justify-center items-center mt-4">
-                            <a href="{{route('orders.create', $order)}}" class="bg-[#28617A]  py-4 w-full text-center md:px-8 md:py-2 md:pt-3 rounded-lg text-white text-sm md:text-lg hover:opacity-80">Enviar Comanda</a>
-                        </div>
                     </div>
-                </div>
-
                 @endif
 
 
@@ -184,7 +155,7 @@
             <script>
                 Livewire.on('delete', (id, order) => {
                     console.log('id', 'order');
-                  Livewire.dispatch('delete', id, order);
+                    Livewire.dispatch('delete', id, order);
                 });
             </script>
         @endpush

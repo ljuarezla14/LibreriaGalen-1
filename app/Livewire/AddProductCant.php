@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AddProductCant extends Component
 {
-    public $rowId, $quantity;
+    public $rowId;
 
     public $qty = 1;
 

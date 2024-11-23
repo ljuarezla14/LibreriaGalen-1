@@ -31,7 +31,7 @@ class Search extends Component
             'price' => $product->price,
             'weight' => 550
         ]);
-        $this->dispatch('add-plate-cant', 'render');
+        $this->dispatch('add-product-cant', 'render');
         $this->dispatch('tabla-items', 'render');
         $this->dispatch('render');
         $this->open = false;

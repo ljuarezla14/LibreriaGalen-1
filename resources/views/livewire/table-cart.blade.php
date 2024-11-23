@@ -32,7 +32,7 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                                 <div class=ml-2>
-                                    <i class="text-blue-500 mr-2">✔</i>
+                                    <i class="far fa-check-circle text-green-500"></i>
                                     <a class="text-sm font-medium text-gray-900 uppercase">
                                         {{ $item->name }}
                                     </a>
