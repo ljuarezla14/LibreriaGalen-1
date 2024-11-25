@@ -24,7 +24,7 @@
                     </section>
                     <hr>
                 @empty
-                    <p class="text-md text-center py-2 font-semibold leading-5">No existe el plato o bebida ingresado.
+                    <p class="text-md text-center py-2 font-semibold leading-5">No existe el producto ingresado
                     </p>
                 @endforelse
 

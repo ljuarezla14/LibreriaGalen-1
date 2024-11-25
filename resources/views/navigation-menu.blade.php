@@ -15,13 +15,16 @@
                     <x-nav-link href="{{route ('admin.admin.index')}}" :active="request()->routeIs('dashboard')">
                         Productos
                     </x-nav-link>
+                    <x-nav-link href="{{route('admin.admin.orders.index')}}" :active="request()->routeIs('admin.orders.index')">
+                        Ordenes
+                    </x-nav-link>
                     <x-nav-link href="{{route ('admin.admin.categories.index')}}" :active="request()->routeIs('dashboard')">
                         Categorias
                     </x-nav-link>
                     <x-nav-link href="{{route ('admin.admin.brands.index')}}" :active="request()->routeIs('dashboard')">
                         Marcas
                     </x-nav-link>
-                    <x-nav-link href="#" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="{{route ('admin.admin.users')}}" :active="request()->routeIs('dashboard')">
                         Usuarios
                     </x-nav-link>
                 </div>

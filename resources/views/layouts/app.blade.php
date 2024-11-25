@@ -23,7 +23,8 @@
         <x-banner />
 
         <div class="min-h-screen bg-gray-100">
-            @auth()
+
+            @auth
             @livewire('navigation')
             @endauth
 

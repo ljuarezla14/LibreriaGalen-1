@@ -12,23 +12,34 @@
         </div>
 
         @auth
+            @role('admin')
             <div class="flex justify-between">
-                <div class="bg-gray-800 mr-8 px-4 py-2 space-x-4 flex items-center rounded-3xl">
-                    <a href="{{route('show.products')}}" class="nav-link">Productos</a>
-                    <span class="text-white font-semibold">|</span>
-                    <a href="{{route('show.category')}}" class="nav-link">Categorías</a>
-                    <span class="text-white font-semibold">|</span>
-                    <a href="{{route('show.subcategory')}}" class="nav-link">Subcategorías</a>
-                    <span class="text-white font-semibold">|</span>
-                    <a href="{{route('show.brands')}}"  class="nav-link">Marcas</a>
-
-                </div>
                 <div class="bg-gray-800 ml-8 px-4 py-2 flex space-x-4 items-center rounded-3xl">
                     <a href="{{route('create.order')}}" class="nav-link">Crear Orden</a>
                     <span class="text-white font-semibold">|</span>
                     <a href="{{route('orders.index')}}" class="nav-link">Mis Ordenes</a>
                 </div>
             </div>
+            @else()
+                <div class="flex justify-between">
+                    <div class="bg-gray-800 mr-8 px-4 py-2 space-x-4 flex items-center rounded-3xl">
+                        <a href="{{route('show.products')}}" class="nav-link">Productos</a>
+                        <span class="text-white font-semibold">|</span>
+                        <a href="{{route('show.category')}}" class="nav-link">Categorías</a>
+                        <span class="text-white font-semibold">|</span>
+                        <a href="{{route('show.subcategory')}}" class="nav-link">Subcategorías</a>
+                        <span class="text-white font-semibold">|</span>
+                        <a href="{{route('show.brands')}}"  class="nav-link">Marcas</a>
+
+                    </div>
+                    <div class="bg-gray-800 ml-8 px-4 py-2 flex space-x-4 items-center rounded-3xl">
+                        <a href="{{route('create.order')}}" class="nav-link">Crear Orden</a>
+                        <span class="text-white font-semibold">|</span>
+                        <a href="{{route('orders.index')}}" class="nav-link">Mis Ordenes</a>
+                    </div>
+                </div>
+            @endrole
+
         @endauth
 
         <div class="ms-3 relative">
@@ -50,11 +61,20 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
-                        <div class="border-t border-gray-200"></div>
 
-                        <x-dropdown-link href="{{ route('admin.admin.index')}}">
-                            Administrador
-                        </x-dropdown-link>
+                        @role('admin')
+                        <div class="border-t border-gray-200"></div>
+                            <x-dropdown-link href="{{ route('admin.admin.index')}}">
+                                Administrador
+                            </x-dropdown-link>
+                        @endrole
+
+                        @role('admin')
+                        <div class="border-t border-gray-100"></div>
+                            <x-dropdown-link href="{{ route('register') }}">
+                                Crear Usuarios
+                            </x-dropdown-link>
+                        @endrole
 
                         <div class="border-t border-gray-200"></div>
 

@@ -1,7 +1,18 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            {{-- <x-jet-authentication-card-logo /> --}}
+            <div class="flex items-center justify-center">
+                <div class="flex flex-col items-center">
+                    <a href="" class="mx-6 my-2">
+                        <span class="text-4xl text-gray-500 cursor-pointer font-bold">Book</span>
+                        <span class="text-4xl font-bold text-gray-500 cursor-pointer">Shop</span>
+                    </a>
+                    <a href="">
+                        <span class="text-4xl font-bold text-blue-500 cursor-pointer">GALEN</span>
+                    </a>
+                </div>
+            </div>
         </x-slot>
 
         <x-validation-errors class="mb-4" />

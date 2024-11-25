@@ -25,11 +25,6 @@ class Products extends Model
         return $this->belongsToMany(User::class);
     }
 
-    // relacion uno a muchos polimorfica
-    public function images(){
-        return $this->morphMany(Images::class, "imageable");
-    }
-
     //URL AMIGABLE
     public function getRouteKeyName()
     {

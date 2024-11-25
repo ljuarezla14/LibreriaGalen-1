@@ -10,12 +10,12 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
-
-
-
+        {{-- <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}"> --}}
+        {{-- <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free-6.7.1-desktop') }}"> --}}
+        <script src="https://kit.fontawesome.com/8e7fac1920.js" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        {{-- <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script> --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -27,9 +27,7 @@
         <x-banner />
 
         <div class="min-h-screen bg-gray-100">
-            @auth()
             @livewire('navigation-menu')
-            @endauth
 
             @if (isset($header))
                 <header class="bg-whithe shadow">
