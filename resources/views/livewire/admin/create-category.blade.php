@@ -12,18 +12,18 @@
                     Nombre
                 </x-label>
 
-                <x-input wire:model.live="createForm.name" type="text" class="w-full mt-1"/>
+                <x-input wire:model.live="nameCreate" type="text" class="w-full mt-1"/>
 
-                <x-input-error for="createForm.name"/>
+                <x-input-error for="nameCreate"/>
             </div>
 
             <div class="col-span-6 sm:col-span-4">
                 <x-label>
                     Slug
                 </x-label>
-                <x-input disabled wire:model.live="createForm.slug" type="text" class="w-full mt-1 bg-gray-100"/>
+                <x-input disabled wire:model.live="slugCreate" type="text" class="w-full mt-1 bg-gray-100"/>
 
-                <x-input-error for="createForm.slug"/>
+                <x-input-error for="slugCreate"/>
             </div>
 
             <div class="col-span-6 sm:col-span-4">
@@ -106,18 +106,18 @@
                         Nombre
                     </x-label>
 
-                    <x-input wire:model="editForm.name" type="text" class="w-full mt-1"/>
+                    <x-input wire:model.live="nameEdit" type="text" class="w-full mt-1"/>
 
-                    <x-input-error for="editForm.name"/>
+                    <x-input-error for="nameEdit"/>
                 </div>
 
                 <div>
                     <x-label>
                         Slug
                     </x-label>
-                    <x-input disabled wire:model="editForm.slug" type="text" class="w-full mt-1 bg-gray-100"/>
+                    <x-input disabled wire:model.live="slugEdit" type="text" class="w-full mt-1 bg-gray-100"/>
 
-                    <x-input-error for="editForm.slug"/>
+                    <x-input-error for="slugEdit"/>
                 </div>
 
                 <div>

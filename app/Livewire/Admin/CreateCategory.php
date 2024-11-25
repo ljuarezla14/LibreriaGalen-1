@@ -12,36 +12,33 @@ class CreateCategory extends Component
 {
 
     use WithFileUploads;
-    public $brands, $categories, $category, $rand;
+    public $brands, $categories, $category, $rand, $nameCreate, $nameEdit, $slugEdit, $slugCreate;
     protected $listeners = ['delete'];
 
     public $createForm =[
-        'name' => null,
         'slug' => null,
         'brands' => [],
     ];
 
     public $editForm =[
         'open'=> false,
-        'name' => null,
-        'slug' => null,
         'brands' => [],
     ];
 
     public $editImage;
 
     protected $rules =[
-        'createForm.name' => 'required',
-        'createForm.slug' => 'required|unique:categories,slug',
+        'nameCreate' => 'required',
+        'slugCreate' => 'required|unique:categories,slug',
         'createForm.brands' => 'required',
     ];
 
     protected $validationAttributes =[
-        'createForm.name' => 'nombre',
-        'createForm.slug' => 'slug',
+        'nameCreate' => 'nombre',
+        'slugCreate' => 'slug',
         'createForm.brands' => 'marcas',
-        'editForm.name' => 'nombre',
-        'editForm.slug' => 'slug',
+        'nameEdit' => 'nombre',
+        'slugEdit' => 'slug',
         'editForm.brands' => 'marcas',
     ];
 
@@ -51,12 +48,12 @@ class CreateCategory extends Component
         $this->rand = rand();
     }
 
-    public function updatedCreateFormName($value){
-        $this->createForm['slug'] = Str::slug($value);
+    public function updatedNameCreate($value){
+        $this->slugCreate = Str::slug($value);
     }
 
-    public function updatedEditFormName($value){
-        $this->editForm['slug'] = Str::slug($value);
+    public function updatedNameEdit($value){
+        $this->slugEdit = Str::slug($value);
     }
 
     public function getBrands(){
@@ -71,14 +68,14 @@ class CreateCategory extends Component
         $this->validate();
 
         $category = Category::create([
-           'name' => $this->createForm['name'],
-           'slug' => $this->createForm['slug'],
+           'name' => $this->nameCreate,
+           'slug' => $this->slugCreate,
         ]);
 
         $category->brands()->attach($this->createForm['brands']);
 
         $this->rand = rand();
-        $this->reset('createForm');
+        $this->reset(['createForm', 'nameCreate', 'slugCreate']);
 
         $this->getCategories();
         $this->dispatch('saved');
@@ -90,25 +87,28 @@ class CreateCategory extends Component
         $this->category = $category;
 
         $this->editForm['open'] = true;
-        $this->editForm['name'] = $category->name;
-        $this->editForm['slug'] = $category->slug;
+        $this->nameEdit = $category->name;
+        $this->slugEdit = $category->slug;
         $this->editForm['brands'] = $category->brands->pluck('id');
     }
 
     public function update(){
 
         $rules =[
-            'editForm.name' => 'required',
-            'editForm.slug' => 'required|unique:categories,slug,' . $this->category->id,
+            'nameEdit' => 'required',
+            'slugEdit' => 'required|unique:categories,slug,' . $this->category->id,
             'editForm.brands' => 'required',
         ];
 
         $this->validate($rules);
 
-        $this->category->update($this->editForm);
+        $this->category->update([
+            'name' => $this->nameEdit,
+            'slug' => $this->slugEdit
+        ]);
         $this->category->brands()->sync($this->editForm['brands']);
 
-        $this->reset(['editForm']);
+        $this->reset(['editForm', 'nameEdit', 'slugEdit']);
 
         $this->getCategories();
     }
