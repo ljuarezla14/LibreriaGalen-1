@@ -53,7 +53,7 @@
                                                 <span class="w-12 text-center">
                                                     @switch($order->status)
                                                         @case(1)
-                                                            <i class="fas fa-business-time text-red-500 opacity-50"></i>
+                                                            <img src="https://img.icons8.com/?size=100&id=ftv3foQkv3DY&format=png&color=000000" class=" h-12 w-12">
                                                             @break
                                                         @case(2)
                                                             <i class="fas fa-credit-card text-gray-500 opacity-50"></i>
@@ -72,7 +72,7 @@
                                                     @endswitch
                                                 </span>
 
-                                                <span>
+                                                <span class="mr-4">
                                                     Orden: {{$order->id}}
                                                     <br>
                                                     {{$order->created_at->format('d/m/Y')}}
