@@ -39,16 +39,6 @@ class OrderCreate extends Component
     }
 
     public function show(Order $order){
-        $items = json_decode($order->content);
-        foreach ($items as $item) {
-            Cart::add([
-                'id' => $item->id,
-                'name' => $item->name,
-                'qty' => $item->qty,
-                'price' => $item->price,
-                'weight' => 550
-            ]);
-        }
         $this->client = $order->client;
         $this->dni = $order->dni;
         $this->phone = $order->phone;
@@ -71,7 +61,7 @@ class OrderCreate extends Component
                     $product->save(); // Guardar la actualización en la base de datos
                     if($product->quantity == 0){
                         $product->status = 1;
-                        $product->save();
+                        $product->update();
                     }
                     // Crear la orden
                     $this->client = $order->client;
@@ -81,11 +71,21 @@ class OrderCreate extends Component
                     $order->user_id = Auth::user()->id;
                     $order->total = Cart::subtotal();
                     $order->content = Cart::content();
-                    $order->save();
                 }
 
             }
         }
+        $items = json_decode($order->content);
+        foreach ($items as $item) {
+            Cart::add([
+                'id' => $item->id,
+                'name' => $item->name,
+                'qty' => $item->qty,
+                'price' => $item->price,
+                'weight' => 550
+            ]);
+        }
+        $order->save();
         Cart::destroy();
         $items = json_decode($order->content);
         $this->dispatch('render');

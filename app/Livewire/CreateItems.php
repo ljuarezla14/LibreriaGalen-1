@@ -58,7 +58,7 @@ class CreateItems extends Component
                 // Verificar si el producto tiene suficiente stock
                 if ($product->quantity >= $cartItem->qty) {
                     // Descontar la cantidad del stock
-                    $product->quantity -= $cartItem->qty;
+                    $product->quantity = $product->quantity - $cartItem->qty;
                     $product->save(); // Guardar la actualización en la base de datos
                     if($product->quantity == 0){
                         $product->status = 1;
