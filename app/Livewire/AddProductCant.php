@@ -27,8 +27,8 @@ class AddProductCant extends Component
         if ($this->qty > 1) { // Evitar que la cantidad sea menor que 1
             $this->qty--;
             Cart::update($this->rowId, $this->qty); // Actualizar carrito
+            $this->dispatch('render'); // Actualizar la vista
         }
-        // $this->dispatch('render'); // Actualizar la vista
     }
 
     public function increment()
@@ -36,8 +36,8 @@ class AddProductCant extends Component
         if ($this->qty <= $this->cantidad) { // Verificar si hay suficiente stock
             $this->qty++;
             Cart::update($this->rowId, $this->qty); // Actualizar carrito
+            $this->dispatch('render'); // Actualizar la vista
         }
-        // $this->dispatch('render'); // Actualizar la vista
     }
 
     public function render()
