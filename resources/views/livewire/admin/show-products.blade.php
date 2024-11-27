@@ -44,6 +44,10 @@
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Precio
                             </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Stock
+                            </th>
                             <th scope="col" class="relative py-3">
                                 <span class="sr-only">Editar</span>
                             </th>
@@ -87,12 +91,16 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $product->price }}
                                 </td>
-                                <td class=" pr-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ $product->quantity}}
+                                </td>
+                                <td class=" pr-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                     <a href={{ route('admin.admin.products.edit', $product) }} class="text-indigo-600 hover:text-indigo-900">Editar</a>
                                     @if ($product->quantity < 6)
                                         <a href={{ route('admin.admin.products.edit', $product) }} class="text-red-600 hover:text-red-900 hover:underline">| Reponer Stock </a>
                                     @endif
                                 </td>
+                                
 
                             </tr>
                         @endforeach
