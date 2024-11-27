@@ -72,17 +72,18 @@ class CreateItems extends Component
                     $order->total = Cart::subtotal();
                     $order->content = Cart::content();
                     $order->save();
-                    // Vaciar el carrito después de completar el pedido
-                    Cart::destroy();
-
-                    // Disparar eventos para actualizar la UI
-                    $this->dispatch('OrderCreate', 'show');
-
-                    // Redirigir a la página de creación de la orden con los datos de la nueva orden
-                    return redirect()->route('orders.create', $order);
                 }
+
             }
         }
+         // Vaciar el carrito después de completar el pedido
+         Cart::destroy();
+
+         // Disparar eventos para actualizar la UI
+         $this->dispatch('OrderCreate', 'show');
+
+         // Redirigir a la página de creación de la orden con los datos de la nueva orden
+         return redirect()->route('orders.create', $order);
     }
 
     public function render()
