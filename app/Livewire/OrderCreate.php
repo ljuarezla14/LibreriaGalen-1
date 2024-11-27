@@ -3,7 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\Order;
+use App\Models\Products;
 use CodersFree\Shoppingcart\Facades\Cart;
+use Illuminate\Container\Attributes\Auth;
 use Livewire\Component;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
@@ -40,7 +42,7 @@ class OrderCreate extends Component
         $items = json_decode($order->content);
         foreach ($items as $item) {
             Cart::add([
-                'id' => rand(5, 15453423),
+                'id' => $item->id,
                 'name' => $item->name,
                 'qty' => $item->qty,
                 'price' => $item->price,

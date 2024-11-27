@@ -10,6 +10,7 @@ class Search extends Component
 {
     public $search;
     public $open = false;
+    public $qty = 1;
 
     public function updatedSearch($value)
     {
@@ -25,9 +26,9 @@ class Search extends Component
         $product = Products::find($productId);
         // && $this->id->subcategory->category->id == 4
         Cart::add([
-            'id' => rand(5, 15453423),
+            'id' => $product->id,
             'name' => $product->name,
-            'qty' => 1,
+            'qty' => $this->qty,
             'price' => $product->price,
             'weight' => 550
         ]);

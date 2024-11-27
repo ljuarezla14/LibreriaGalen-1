@@ -16,6 +16,7 @@
                             <p class="text-sm">Categoria: {{ $product->subcategory->category->name }}</p>
                             <p class="text-sm">Marca: {{ $product->brand->name }}</p>
                             <p class="text-sm">Precio: {{ $product->price }}</p>
+                            <p class="text-sm">Stock: {{ $product->quantity }}</p>
                         </div>
                         <button wire:click="addItem({{$product->id}})" wire:loading.attr="disabled"
                             class="p-1 ml-auto flex bg-blue-600 rounded-2xl">

@@ -34,7 +34,7 @@
                                 <div class=ml-2>
                                     <i class="far fa-check-circle text-green-500"></i>
                                     <a class="text-sm font-medium text-gray-900 uppercase">
-                                        {{ $item->name }}
+                                        {{ $item->name }}</span>
                                     </a>
                                 </div>
                             </div>

@@ -9,12 +9,6 @@
                     <h1 class="text-gray-600 text-lg md:text-2xl uppercase text-left font-indie font-semibold">
                         Orden - {{ $order->id }}</h1>
                 </div>
-                {{-- @if ($order->status == 1)
-                    <x-button-enlace wire:submit.prevent="update" name="status" value="2" class="text-gray-600 text-md uppercase text-left font-indie cursor-pointer">Pagar</x-button-enlace>
-                @elseif($order->status == 2)
-                    <x-button-enlace class="text-gray-600 text-md uppercase text-left font-indie cursor-pointer">Entregar</x-button-enlace>
-                @else
-                @endif --}}
             </div>
 
             @livewire('status-order', ['order' => $order], key('status-order-' . $order->id))
@@ -120,7 +114,7 @@
                     </a>
                 </div>
                 @if ($order->status == 1 )
-                    <div class="">
+                    <div>
                         <div class="container">
                             <div
                                 class="flex justify-center items-center rounded-lg shadow-lg px-6 py-4 mt-4 bg-white ">
