@@ -12,6 +12,10 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug'];
 
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    protected $table = 'categories';
+
     // Relacion de uno a muchos
     public function subcategories(){
         return $this->hasMany(Subcategory::class);

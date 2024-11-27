@@ -6,7 +6,15 @@
             </h2>
         </x-slot>
 
-        <div class="container py-12">
+        <div class="mt-4 max-w-7xl flex justify-end">
+            <x-button-enlace 
+                href="{{ route('register') }}"
+                class="">
+                Registrar un usuario
+            </x-button-enlace>
+        </div>
+
+        <div class="container py-6">
             <div class="px-6 py-4 flex rounded-md bg-gradient-to-r from-sky-200 to-indigo-200">
                 <x-input class="w-full" wire:model.live="search" type="text"
                     placeholder="Ingrese el nombre del usuario que desea buscar" />

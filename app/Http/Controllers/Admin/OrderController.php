@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function index(){
 
-        $orders = Order::query()->where('status','<>', 5);
+        $orders = Order::where('status','<>', 5);
 
         if (request('status')) {
             $orders->where('status', request('status'));

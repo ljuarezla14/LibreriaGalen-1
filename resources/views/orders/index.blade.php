@@ -3,7 +3,7 @@
     <div class="container py-12">
 
         <section class="grid lg:grid-cols-4 gap-6 text-white">
-            <a href="{{ route('orders.index') . "?status=1"}}" class="bg-red-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
+            <a href="{{ route('orders.index') . "?status=1"}}" class="bg-green-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
                 <p class="text-center text-2xl">
                     {{$recibido}}
                 </p>
@@ -30,7 +30,7 @@
                     <i class="fa fa-thumbs-up text-white"></i>
                 </p>
             </a>
-            <a href="{{route ('orders.index')."?status=5"}}" class="bg-green-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
+            <a href="{{route ('orders.index')."?status=5"}}" class="bg-red-500 bg-opacity-75 rounded-lg px-12 pt-8 pb-4">
                 <p class="text-center text-2xl">
                     {{$cancelado}}
                 </p>
@@ -59,15 +59,11 @@
                                                             <i class="fas fa-credit-card text-gray-500 opacity-50"></i>
                                                             @break
                                                         @case(3)
-                                                            <i class="fas fa-truck text-yellow-500 opacity-50"></i>
+                                                            <i class="fa fa-thumbs-up text-yellow-500 opacity-50"></i>
                                                             @break
                                                         @case(4)
-                                                            <i class="fas fa-check-circle text-pink-500 opacity-50"></i>
+                                                            <i class="fas fa-times-circle text-pink-500 opacity-50"></i>
                                                             @break
-                                                        @case(5)
-                                                            <i class="fas fa-times-circle text-green-500 opacity-50"></i>
-                                                            @break
-                                                        @default
 
                                                     @endswitch
                                                 </span>

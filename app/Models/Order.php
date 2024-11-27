@@ -9,7 +9,11 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $table = 'orders';
+
     protected $guarded = ['id', 'create_at', 'updated_at'];
+
+    protected $fillable = [ 'user_id', 'client', 'dni', 'phone', 'status', 'total', 'content'];
 
     const RECIBIDO = 1;
     const PAGADO = 2;

@@ -9,6 +9,9 @@ class Brands extends Model
 {
     use HasFactory;
 
+    protected $table = 'brands';
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
     protected $fillable = ['name'];
     
     // relacion uno a muchos

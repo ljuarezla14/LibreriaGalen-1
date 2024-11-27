@@ -11,7 +11,11 @@ class Products extends Model
     const BORRADOR = 1;
     const PUBLICADO = 2;
 
+    protected $table = 'products';
+
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    protected $fillable = ['name', 'description', 'price', 'stock', 'status', 'subcategory_id', 'brand_id', 'slug', 'quantity'];
 
     public function brand(){
         return $this->belongsTo(Brands::class);
