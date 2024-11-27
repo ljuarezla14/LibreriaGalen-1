@@ -7,7 +7,7 @@
         </x-slot>
 
         <div class="mt-4 max-w-7xl flex justify-end">
-            <x-button-enlace 
+            <x-button-enlace
                 href="{{ route('register') }}"
                 class="">
                 Registrar un usuario
@@ -87,6 +87,12 @@
                                                     {{ $role == 'vendedor' ? 'checked' : '' }}
                                                     @endforeach value="2" type="radio" name="{{$user->email}}" wire:change="assignRole({{$user->id}}, $event.target.value)">
                                             Vendedor
+                                        </label>
+                                        <label class="ml-2">
+                                            <input  @foreach ($user->getRoleNames() as $role)
+                                                    {{ $role == 'inhabilitar' ? 'checked' : '' }}
+                                                    @endforeach value="3" type="radio" name="{{$user->email}}" wire:change="assignRole({{$user->id}}, $event.target.value)">
+                                            Inhabilitar
                                         </label>
                                     </td>
                                 </tr>
