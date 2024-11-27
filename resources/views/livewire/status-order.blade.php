@@ -10,10 +10,16 @@
                 <input wire:model="status" type="radio" name="status" value="2">
                 Pagado
             </label>
-            <label>
+            <label class="mr-6">
                 <input wire:model="status" type="radio" name="status" value="3">
                 Entregado
             </label>
+            @role('admin')
+                <label>
+                    <input wire:model="status" type="radio" name="status" value="4">
+                    Cancelado
+                </label>
+            @endrole
         </div>
 
         <div class="flex ml-auto items-center">
@@ -22,9 +28,7 @@
                 Actualizado
             </x-action-message>
 
-            <x-button wire:click="save"
-                wire:loading.attr="disabled"
-                wire:target="save">
+            <x-button wire:click="save" wire:loading.attr="disabled" wire:target="save">
                 Actualizar
             </x-button>
 

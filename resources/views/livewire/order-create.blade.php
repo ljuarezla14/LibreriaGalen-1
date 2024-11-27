@@ -119,7 +119,7 @@
                         Ir al inicio
                     </a>
                 </div>
-                @if ($order->status == 1)
+                @if ($order->status == 1 )
                     <div class="">
                         <div class="container">
                             <div
@@ -142,7 +142,7 @@
                             <div class="flex justify-center items-center mt-4">
                                 <a href="{{ route('orders.create', $order) }}"
                                     class="bg-[#28617A]  py-4 w-full text-center md:px-8 md:py-2 md:pt-3 rounded-lg text-white text-sm md:text-lg hover:opacity-80">Enviar
-                                    Comanda</a>
+                                    pedido</a>
                             </div>
                         </div>
                     </div>
