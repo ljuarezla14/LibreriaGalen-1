@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class TablaItems extends Component
 {
-    // protected $listeners = ['render'];
+    protected $listeners = ['render'];
 
     public Products $product;
 

@@ -34,6 +34,8 @@ class Search extends Component
         ]);
         // $this->dispatch('table-cart', 'render');
         // $this->dispatch('tabla-items', 'render');
+         // Disparar eventos para actualizar la UI
+        //  $this->dispatch('OrderCreate', 'show');
         $this->dispatch('render');
         $this->open = false;
         $this->search = '';

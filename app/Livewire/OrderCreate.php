@@ -13,7 +13,7 @@ class OrderCreate extends Component
 {
     use AuthorizesRequests;
     public $client, $dni, $phone, $status, $order;
-    protected $listeners = ['render'];
+    // protected $listeners = ['render'];
 
     public function delete($rowID, Order $order){
         $items = json_decode($order->content);
