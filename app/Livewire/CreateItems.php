@@ -27,22 +27,7 @@ class CreateItems extends Component
         'dni' => 'dni',
     ];
 
-    // public function create_order(){
-    //     $rules = $this->rules;
-    //     $this->validate($rules);
-
-    //     $order = new Order();
-    //     $order->client = $this->client;
-    //     $order->phone = $this->phone;
-    //     $order->dni = $this->dni;
-    //     $order->user_id = Auth::user()->id;
-    //     $order->total = Cart::subtotal();
-    //     $order->content = Cart::content();
-    //     $order->save();
-    //     Cart::destroy();
-    //     $this->dispatch('OrderCreate', 'show');
-    //     return redirect()->route('orders.create', $order);
-    // }
+    
     public function create_order()
     {
         // Validar los datos de la orden

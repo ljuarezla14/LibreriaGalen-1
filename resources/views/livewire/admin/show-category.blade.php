@@ -14,18 +14,18 @@
                     Nombre
                 </x-label>
 
-                <x-input wire:model.live="createForm.name" type="text" class="w-full mt-1"/>
+                <x-input wire:model.live="nameCreate" type="text" class="w-full mt-1"/>
 
-                <x-input-error for="createForm.name"/>
+                <x-input-error for="nameCreate"/>
             </div>
 
             <div class="col-span-6 sm:col-span-4">
                 <x-label>
                     Slug
                 </x-label>
-                <x-input disabled wire:model.live="createForm.slug" type="text" class="w-full mt-1 bg-gray-100"/>
+                <x-input disabled wire:model.live="slugCreate" type="text" class="w-full mt-1 bg-gray-100"/>
 
-                <x-input-error for="createForm.slug"/>
+                <x-input-error for="slugCreate"/>
             </div>
 
 
@@ -72,7 +72,7 @@
                             <td class="py-2">
                                 <div class="flex divide-x divide-gray-300 font-semibold">
                                     <a class="pr-2 hover:text-blue-600 cursor-pointer" wire:click="edit('{{$subcategory->id}}')">Editar</a>
-                                    <a class="pl-2 hover:text-red-600 cursor-pointer" wire:click="delete('{{$subcategory->id}}')">Eliminar</a>
+                                    <a type="submit" class="pl-2 hover:text-red-600 cursor-pointer" wire:click="delete('{{$subcategory->id}}')">Eliminar</a>
                                 </div>
                             </td>
                         </tr>
@@ -83,7 +83,7 @@
     </x-action-section>
 
     {{-- Modal Editar --}}
-    <x-dialog-modal wire:model="editForm.open" wire:ignore>
+    <x-dialog-modal wire:model="open" wire:ignore>
         <x-slot name="title">
             Editar subcategoría
         </x-slot>
@@ -95,18 +95,18 @@
                         Nombre
                     </x-label>
 
-                    <x-input wire:model="editForm.name" type="text" class="w-full mt-1"/>
+                    <x-input wire:model="nameEdit" type="text" class="w-full mt-1"/>
 
-                    <x-input-error for="editForm.name"/>
+                    <x-input-error for="nameEdit"/>
                 </div>
 
                 <div>
                     <x-label>
                         Slug
                     </x-label>
-                    <x-input disabled wire:model="editForm.slug" type="text" class="w-full mt-1 bg-gray-100"/>
+                    <x-input disabled wire:model="slugEdit" type="text" class="w-full mt-1 bg-gray-100"/>
 
-                    <x-input-error for="editForm.slug"/>
+                    <x-input-error for="slugEdit"/>
                 </div>
 
             </div>

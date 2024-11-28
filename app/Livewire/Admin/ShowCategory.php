@@ -10,40 +10,33 @@ use Illuminate\Support\Str;
 class ShowCategory extends Component
 {
     public $category, $subcategories, $subcategory;
+    public $nameCreate, $slugCreate, $nameEdit, $slugEdit;
     protected $listeners = ['delete'];
 
-    protected $rules =[
-        'createForm.name' => 'required',
-        'createForm.slug' => 'required|unique:subcategories,slug',
+    public $open = false;
 
+    protected $rules = [
+        'nameCreate' => 'required',
+        'slugCreate' => 'required|unique:subcategories,slug',
     ];
 
     protected $validationAttributes =[
-        'createForm.name' => 'nombre',
-        'createForm.slug' => 'slug',
-        'editForm.name' => 'nombre',
-        'editForm.slug' => 'slug',
+        'nameCreate' => 'nombre',
+        'slugCreate' => 'slug',
+        'nameEdit' => 'nombre',
+        'slugEdit' => 'slug',
 
     ];
 
-    public $createForm =[
-        'name' => null,
-        'slug' => null,
-    ];
 
-    public $editForm =[
-        'open' => false,
-        'name' => null,
-        'slug' => null,
 
-    ];
-
-    public function updatedCreateFormName($value){
-        $this->createForm['slug'] = Str::slug($value);
+    public function updatedNameCreate($value){
+        $this->slugCreate = Str::slug($value);
     }
 
-    public function updatedEditFormName($value){
-        $this->editForm['slug'] = Str::slug($value);
+    public function updatedNameEdit($value)
+    {
+        $this->slugEdit  = Str::slug($value);
     }
 
     public function mount(Category $category){
@@ -57,37 +50,51 @@ class ShowCategory extends Component
 
     public function save(){
         $this->validate();
-        $this->category->subcategories()->create($this->createForm);
-        $this->reset('createForm');
+        $this->category->subcategories()->create([
+            'name' => $this->nameCreate,
+            'slug' => $this->slugCreate,
+        ]);
+
+        $this->reset('nameCreate', 'slugCreate');
         $this->getSubcategories();
 
     }
 
     public function edit(Subcategory $subcategory){
-
-        $this->subcategory = $subcategory;
         $this->resetValidation();
 
-        $this->editForm['open'] = true;
+        $this->subcategory = $subcategory;
 
-        $this->editForm['name'] = $subcategory->name;
-        $this->editForm['slug'] = $subcategory->slug;
+        $this->open = true;
+
+        $this->nameEdit = $subcategory->name;
+        $this->slugEdit = $subcategory->slug;
 
     }
 
     public function update(){
-        $this->validate([
-            'editForm.name' => 'required',
-            'editForm.slug' => 'required|unique:subcategories,slug,' . $this->subcategory->id
+        $rules = [
+            'nameEdit' => 'required',
+            'slugEdit' => 'required|unique:categories,slug,' . $this->category->id,
+        ];
+
+        $this->validate($rules);
+
+        $this->subcategory->update([
+            'name' => $this->nameEdit,
+            'slug' => $this->slugEdit,
         ]);
 
-        $this->subcategory->update($this->editForm);
+        $this->reset('nameEdit', 'slugEdit', 'open');
+
         $this->getSubcategories();
-        $this->reset('editForm');
     }
 
-    public function delete(Subcategory $subcategory){
+    public function delete($id)
+    {
+        $subcategory = Subcategory::findOrFail($id);
         $subcategory->delete();
+
         $this->getSubcategories();
     }
 

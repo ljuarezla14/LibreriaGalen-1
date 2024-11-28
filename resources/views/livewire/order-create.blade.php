@@ -113,34 +113,7 @@
                         Ir al inicio
                     </a>
                 </div>
-                @if ($order->status == 1 )
-                    <div>
-                        <div class="container">
-                            <div
-                                class="flex justify-center items-center rounded-lg shadow-lg px-6 py-4 mt-4 bg-white ">
-                                <p class="text-gray-600 text-2xl  text-center font-indie"><span
-                                        class="font-semibold mr-2 text-md md:text-2xl ">¿Faltó algún
-                                        producto...?</span></p>
-                                {{-- <x-add-list size="40" /> --}}
-                            </div>
-
-                            <div class=" bg-blue-200 rounded-lg shadow-lg px-2 md:px-6 py-4 mt-6 md:mx-12 mb-6">
-                                <div class="flex">
-                                    @livewire('search')
-                                </div>
-                            </div>
-
-                            {{-- Tabla cart new --}}
-                            @livewire('table-cart')
-                            {{-- fin tabla cart new --}}
-                            <div class="flex justify-center items-center mt-4">
-                                <a href="{{ route('orders.create', $order) }}"
-                                    class="bg-[#28617A]  py-4 w-full text-center md:px-8 md:py-2 md:pt-3 rounded-lg text-white text-sm md:text-lg hover:opacity-80">Enviar
-                                    pedido</a>
-                            </div>
-                        </div>
-                    </div>
-                @endif
+                
 
 
             </div>
