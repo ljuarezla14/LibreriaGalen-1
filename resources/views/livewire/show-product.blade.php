@@ -44,6 +44,10 @@
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Precio
                             </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Stock
+                            </th>
                             {{-- <th scope="col" class="relative px-6 py-3">
                                 <span class="sr-only">Editar</span>
                             </th> --}}
@@ -68,6 +72,7 @@
                                         {{$product->subcategory->category->name}}
                                     </div>
                                 </td>
+                                
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     @switch($product->status)
                                         @case(1)
@@ -89,6 +94,9 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $product->price }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ $product->quantity }}
                                 </td>
                                 {{-- <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <a href={{ route('admin.admin.products.edit', $product) }} class="text-indigo-600 hover:text-indigo-900">Editar</a>

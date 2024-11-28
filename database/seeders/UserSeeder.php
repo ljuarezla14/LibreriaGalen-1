@@ -20,14 +20,14 @@ class UserSeeder extends Seeder
         $role = Role::create(['name' => 'inhabilitar']);
 
         User::create([
-            'name' => 'Kevin Martinez',
-            'email' => 'admin@correo.com',
+            'name' => 'Gabriel Reto',
+            'email' => 'Gabriel@admin.com',
             'password' => bcrypt('12345678'),
         ])->assignRole('admin');
 
         User::create([
-            'name' => 'Brayan Martinez',
-            'email' => 'vendedor@correo.com',
+            'name' => 'Victor Ortiz',
+            'email' => 'Victor@vendedor.com',
             'password' => bcrypt('12345678'),
         ])->assignRole('vendedor');
     }
