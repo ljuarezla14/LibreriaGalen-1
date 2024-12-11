@@ -29,7 +29,7 @@ class CreateProduct extends Component
         'quantity' => 'required'
     ];
 
-    public function updatedCategoryId($value){
+    public function updatedCategoryId($value){ //value=1
         $this->subcategories = Subcategory::where('category_id', $value)->get();
 
         $this->brands = Brands::whereHas('categories', function(Builder $query) use ($value){
@@ -50,6 +50,7 @@ class CreateProduct extends Component
     public function mount(){
         $this->categories = Category::all();
     }
+
 
     public function save(){
         $this->validate();

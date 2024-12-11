@@ -83,8 +83,8 @@ class EditProduct extends Component
         $this->product->save();
 
         $this->dispatch('saved');
+        redirect()->route('admin.admin.index');
 
-        return redirect()->route('admin.admin.index');
     }
 
     public function updatedName($value){

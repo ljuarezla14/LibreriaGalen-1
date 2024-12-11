@@ -26,33 +26,27 @@
 
                 {{-- Categoria --}}
                 <div>
-                    <x-label class="mb-2 text-md" value="Categorías" />
-                    <select class="w-full form-control border-gray-200 shadow rounded-lg" wire:model="category_id">
-                        <option value="" selected disabled>Seleccione una categoría</option>
-
+                    <x-label value="Categorías" class="text-lg" />
+                    <select class="w-full form-control rounded-lg text-lg border-gray-300" wire:model.live="category_id">
+                        <option value="" selected disabled>Selecciona una categoría</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
-
                     </select>
-                    <x-input-error for="product.category_id" />
+                    <x-input-error for="category_id" class="mt-2" />
                 </div>
-
 
                 {{-- Subcategoria --}}
 
                 <div>
-                    <x-label class="mb-2 text-md" value="Subcategorías" />
-                    <select class="w-full form-control border-gray-200 shadow rounded-lg"
-                        wire:model="subcategory_id">
-                        <option value="" selected disabled>Seleccione una subcategoría</option>
-
+                    <x-label value="Subcategorías" class="text-lg" />
+                    <select class="w-full form-control rounded-lg text-lg border-gray-300" wire:model.live="subcategory_id">
+                        <option value="" selected disabled>Selecciona una subcategoría</option>
                         @foreach ($subcategories as $subcategory)
-                                <option value="{{$subcategory->id}}" {{ $subcategory->id == $product->subcategory_id ? 'selected' : ''}}>{{$subcategory->name}}</option>
-                         @endforeach
-
+                            <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                        @endforeach
                     </select>
-                    <x-input-error for="subcategory_id" />
+                    <x-input-error for="subcategory_id" class="mt-2" />
                 </div>
 
             </div>
@@ -122,7 +116,7 @@
                     Guardado Correctamente
                 </x-action-message>
 
-                <a href="{{route('admin.admin.index')}}">
+                <a >
                     <x-button wire:loading.attr="disable" wire:target="save" wire:click="save">
                         Editar Producto
                     </x-button>

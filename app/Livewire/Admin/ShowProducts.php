@@ -10,6 +10,7 @@ class ShowProducts extends Component
 {
     use WithPagination;
     public $search;
+    protected $listeners = ['show-product'];
 
     public function updatingSearch(){
         $this->resetPage();
