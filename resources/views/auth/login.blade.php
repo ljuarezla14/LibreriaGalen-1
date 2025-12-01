@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <img src="{{ asset('img/LIBRERIA.svg') }}" alt="" width="600px">
+            <img src="{{ asset('img/OCEANICA.png') }}" alt="" width="600px">
         </x-slot>
 
         {{-- <x-jet-validation-errors class="mb-4" /> --}}

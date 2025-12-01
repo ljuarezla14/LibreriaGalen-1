@@ -29,14 +29,13 @@ class CreateProduct extends Component
         'quantity' => 'required'
     ];
 
-    public function updatedCategoryId($value){ //value=1
+    public function updatedCategoryId($value){
         $this->subcategories = Subcategory::where('category_id', $value)->get();
 
         $this->brands = Brands::whereHas('categories', function(Builder $query) use ($value){
             $query->where('category_id', $value);
         })->get();
 
-        // $this->reset(['subcategory_id', 'brand_id']);
     }
 
     public function updatedName($value){

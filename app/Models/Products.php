@@ -29,7 +29,6 @@ class Products extends Model
         return $this->belongsToMany(User::class);
     }
 
-    //URL AMIGABLE
     public function getRouteKeyName()
     {
         return 'slug';

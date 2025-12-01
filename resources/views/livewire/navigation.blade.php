@@ -3,11 +3,11 @@
 
         <div class="shrink-0 flex items-center bg-slate-100 rounded-3xl px-2 ">
             <a href="{{ route('home') }}">
-                <x-application-mark class="block h-4 w-auto" />
+                <img src="{{ asset('img/OCEANICA.png') }}" alt="Logo OCEÁNICA" class="h-12 w-auto">
             </a>
             <a href="" class="flex flex-col justify-center items-center cursor-pointer font-semibold">
                 Libreria
-                <span>Galen</span>
+                <span>Oceánica</span>
             </a>
         </div>
         @role('admin|vendedor')

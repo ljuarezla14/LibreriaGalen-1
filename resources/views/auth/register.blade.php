@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <img src="{{ asset('img/LIBRERIA.svg') }}" alt="" width="600px">
+            <img src="{{ asset('img/OCEANICA.png') }}" alt="" width="600px">
         </x-slot>
 
         <h2 class=" text-5xl  font-bold text-blue-950 mb-16 mt-5 ">Registrar usuario</h2>
